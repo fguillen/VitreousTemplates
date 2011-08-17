@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"> 
+    <title>Portfolio 101 :: {{#element}}{{title}}{{/element}}</title> 
+    <link rel='stylesheet' href='{{assets}}/style.css' type='text/css' />  
+  </head> 
+ 
+  <body> 
+    <div id='menu'> 
+      <div class='container'>  
+        <div id="logo">
+          <a href="/"><img src="{{assets}}/logo.gif" /></a>
+        </div>
+        
+        {{#home}}
+          {{#collections}}
+            <ul> 
+              <li class='section-title'>{{title}}</li> 
+              {{#items}}
+                <li><a href="{{link}}">{{title}}</a></li> 
+              {{/items}}
+            </ul>
+          {{/collections}}
+        {{/home}}
+      </div>	
+    </div> <!-- menu -->
+ 
+    {{#element}} 
+    <div id='content'> 
+      <div class='container'> 
+        <table>
+          <tr>
+            <td>
+              <div id='text'>
+                <h1>{{title}}</h1> 
+                {{#to_md}}{{description}}{{/to_md}}
+              </div> 
+            </td>
+      
+            {{#files}}
+              <td>
+                <div class='image'><img src='{{.}}' height="500px"/></div> 
+              </td>
+            {{/files}}
+          </tr>
+        </table>    
+      </div> 
+    </div> 
+    {{/element}}
+  </body> 
+</html>

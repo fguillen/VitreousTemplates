@@ -1,0 +1,107 @@
+#image-odd,
+#image-even {  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Century Gothic","Lucida Grande",Arial,sans-serif;
+  overflow: hidden;
+} 
+
+h1{
+  font-size: 40px;
+}
+
+a {
+  color: black;
+  font-weight: bold;
+}
+
+
+#text {
+  font-size: 13px;
+  z-index: 70;
+  color: black;
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  width: 250px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+#text p{
+  margin-bottom: 10px;
+}
+
+#text p strong{
+  font-weight: bold;
+}
+
+#controls {
+  z-index: 60;
+  color: black;
+  position: absolute;
+  bottom: 20px;
+  right: 20px; 
+}
+
+#controls div.control {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  margin-right: 10px;
+  float: left;
+}
+
+#controls a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-indent: -9000px;
+}
+
+#controls a#previous {
+  background: url( "previous.png" ) no-repeat center center;
+}
+
+#controls a#play {
+  background: url( "play.png" ) no-repeat center center;
+}
+
+#controls a#pause {
+  background: url( "pause.png" ) no-repeat center center;
+}
+
+#controls a#next {
+  background: url( "next.png" ) no-repeat center center;
+}
+
+.rounded-corners {
+border-radius: 10px;
+-ms-border-radius: 10px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-khtml-border-radius: 10px;
+}
+
+#loading {
+  background-color: #000;
+  z-index: 80;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  border-radius: 10px;
+  -ms-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+}

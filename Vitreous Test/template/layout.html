@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{#element}}{{title}}{{/element}} - My Vitreous Gallery</title> 
+ 
+    <link rel='stylesheet' href='{{assets}}/style.css' type='text/css' /> 
+    <link rel="icon" href="{{assets}}/favicon.ico" type="image/vnd.microsoft.icon" /> 
+  </head>  
+  <body> 
+    <div id="container"> 
+      <div id="menu"> 
+        <ul> 
+          <li><a href="/">Home</a></li>
+          {{#home}}
+            {{#collections}}
+              <li>
+                <a href="{{link}}">{{title}}</a>
+                <ul>
+                  {{#items}}
+                    <li><a href="{{link}}">{{title}}</a></li>
+                  {{/items}}
+                </ul>
+              </li>
+            {{/collections}}
+          {{/home}}
+        </ul> 
+        <p>Built with Vitreous</p> 
+      </div> <!-- menu -->
+  
+      <div id="content"> 
+        {{#element}}
+          <div class="element">
+            <h1><a href="{{link}}">{{title}}</a></h1> 
+            {{#jpg}}<img src="{{jpg}}" />{{/jpg}}
+            <p>{{txt}}</p>
+            {{#elements}}
+              <div class="sub-element">
+                <h2><a href="{{link}}">{{title}}</a></h2> 
+                {{#jpg}}<img src="{{jpg}}" />{{/jpg}}
+                <p>{{txt}}</p>
+              </div>
+            {{/elements}}
+          </div>
+        {{/element}}
+      </div> <!-- content -->
+    </div> <!-- container -->
+ 
+ 
+  </body> 
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{#home}}{{title}}{{/home}}</title> 
+ 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{assets}}/application.js"></script>
+    
+    <link rel='stylesheet' href='{{assets}}/style.css' type='text/css' /> 
+    <link rel="icon" href="{{assets}}/favicon.ico" type="image/vnd.microsoft.icon" /> 
+    
+    <script>      
+      var element_width = 100;
+      var element_height = 140;
+      var images = [];
+      var thumbs = [];
+      var n = 0;
+      var lattice_width = 0;
+      var lattice_height = 0;
+      var lattice = new Array();
+      var lattice_x = 0;
+      var lattice_y = 0;
+      var dimension = 0;
+    
+      $( function(){
+        {{#home}}
+          {{#elements}}
+            images[n] = "{{jpg}}";
+            thumbs[n] = "{{jpg_thumb}}";
+            n++;
+          {{/elements}}
+        {{/home}}
+        
+        createLattice();
+        renderLattice();
+      });
+      
+      function createLattice(){
+        dimension = Math.ceil( Math.sqrt( images.length ) );
+        
+        for( var i = 0; i < images.length; i++ ) {
+          // lattice[i] = new Array();
+          // lattice[i]['row'] = Math.floor( i / dimension );
+          // lattice[i]['column'] = i % dimension; 
+          // lattice[i]['image'] = images[i];
+          // lattice[i]['thumb'] = thumbs[i];
+          
+          $('#sublattice_left').append( '<div id="element_' + i + '" class="element"><a href="' + images[i] + '"><img src="' + thumbs[i] + '" /></a></div>' );
+          $('#sublattice_right').append( '<div id="element_' + i + '" class="element"><a href="' + images[i] + '"><img src="' + thumbs[i] + '" /></a></div>' );
+        }
+        
+        lattice_width = ( dimension * element_width );
+        lattice_height = ( dimension * element_height );
+        
+        $('.sublattice').css( 'width', lattice_width + 'px' );
+        $('.sublattice').css( 'height', lattice_height + 'px' );
+        $('#lattice').css( 'width', (lattice_width * 2) + 'px' );
+        $('#lattice').css( 'height', lattice_height + 'px' );
+        
+        lattice_x = -( (lattice_width - $('#content').width()) / 2 );
+        lattice_y = -( (lattice_height - $('#content').height()) / 2 );
+      }
+      
+      function renderLattice(){
+        // for( var i = 0; i < lattice.length; i++ ) {
+        //   var x = ((lattice[i]['column'] * element_width) + lattice_x);
+        //   var y = ((lattice[i]['row'] * element_height) + lattice_y);
+        //   
+        //   $('#element_' + i).css( 'left', x + 'px' );
+        //   $('#element_' + i).css( 'top', y + 'px' );
+        // }
+        
+        $('#lattice').css( 'left', lattice_x + 'px' );
+        $('#lattice').css( 'top', lattice_y + 'px' );
+        
+        $('#lattice_x').val( lattice_x );
+        $('#lattice_y').val( lattice_y );
+      }
+      
+      function move( x_inc, y_inc ){
+        lattice_x += x_inc;
+        lattice_y += y_inc;
+        
+        if( lattice_x > 0 ) {
+          lattice_x -= lattice_width;
+        }
+        
+        if( lattice_x < -(lattice_width) ) {
+          lattice_x += lattice_width;
+        }
+        
+        if( lattice_y > 0 ) {
+          lattice_y = 0;
+        }
+        
+        if( lattice_y < -(lattice_height - $('#content').height()) ) {
+          lattice_y = -(lattice_height - $('#content').height());
+        }
+        
+        renderLattice();
+      }
+    </script>
+  </head>  
+  <body> 
+    <div id="container">   
+      <div id="controls">
+        <ul>
+          <li>lattice_x: <input type="text" id="lattice_x" /></li>
+          <li>lattice_y: <input type="text" id="lattice_y" /></li>
+          <li><input type="button" id="left" value="left" onclick="move( 100, 100 )" /></li>
+          <li><input type="button" id="right" value="right" onclick="move( -100, -100 )" /></li>
+        </ul>
+      </div>
+      <div id="content"> 
+        <div id="lattice">
+          <div id="sublattice_left" class="sublattice"></div>
+          <div id="sublattice_right" class="sublattice"></div>
+        </div>
+      </div> <!-- content -->
+    </div> <!-- container --> 
+  </body> 
+</html>
