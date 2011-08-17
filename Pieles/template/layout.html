@@ -21,7 +21,13 @@
       var lattice = new Array();
       var lattice_x = 0;
       var lattice_y = 0;
+      var lattice_step_x = 0;
+      var lattice_step_y = 0;
       var dimension = 0;
+      var min_box = 200;
+      var max_step = 400;
+      
+      var lattice_velocity = 50;
     
       $( function(){
         {{#home}}
@@ -34,6 +40,25 @@
         
         createLattice();
         renderLattice();
+        
+        $(document).mousemove( function( e ){
+          window_center_x = $('#content').width() / 2;
+          window_center_y = $('#content').height() / 2;
+          
+          if( Math.abs( window_center_x - e.pageX ) > min_box ) {
+            lattice_step_x = (window_center_x - e.pageX) / lattice_velocity;
+          } else {
+            lattice_step_x = 0;
+          }
+          
+          if( Math.abs( window_center_y - e.pageY ) > min_box ) {
+            lattice_step_y = (window_center_y - e.pageY) / lattice_velocity;
+          } else {
+            lattice_step_y = 0;
+          }
+        });
+        
+        setInterval( function() { moveLattice( lattice_step_x, lattice_step_y ) }, 10 );
       });
       
       function createLattice(){
@@ -78,7 +103,7 @@
         $('#lattice_y').val( lattice_y );
       }
       
-      function move( x_inc, y_inc ){
+      function moveLattice( x_inc, y_inc ){
         lattice_x += x_inc;
         lattice_y += y_inc;
         
@@ -100,6 +125,8 @@
         
         renderLattice();
       }
+      
+      
     </script>
   </head>  
   <body> 
@@ -108,8 +135,8 @@
         <ul>
           <li>lattice_x: <input type="text" id="lattice_x" /></li>
           <li>lattice_y: <input type="text" id="lattice_y" /></li>
-          <li><input type="button" id="left" value="left" onclick="move( 100, 100 )" /></li>
-          <li><input type="button" id="right" value="right" onclick="move( -100, -100 )" /></li>
+          <li><input type="button" id="left" value="left" onclick="moveLattice( 100, 100 )" /></li>
+          <li><input type="button" id="right" value="right" onclick="moveLattice( -100, -100 )" /></li>
         </ul>
       </div>
       <div id="content"> 
