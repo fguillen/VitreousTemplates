@@ -13,7 +13,7 @@
 
 .element:hover {
   -webkit-box-shadow: 10px 10px 30px #292929;
-  -webkit-transform:scale(1.2);
+  -webkit-transform:scale(1.6);
 }
 
 .element img {
@@ -22,10 +22,11 @@
 
 #lattice {
   position: absolute;
+  z-index: 2;
 }
 
-.sublattice {
-  float: left;
+#lattice:hover {
+  z-index: 3;
 }
 
 #controls {

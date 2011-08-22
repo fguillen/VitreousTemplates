@@ -1,6 +1,9 @@
 require 'fileutils'
 
-Dir.glob('*.jpg')[0,4].each do |e|
-  puts "copying #{e} into d_c_#{e}"
-  FileUtils.cp( e, "d_c_#{e}" )
+Dir.glob('./website/*.png').each do |e|
+  16.times do |i|
+    final_path = "#{File.dirname( e )}/a_#{i}_#{File.basename( e )}"
+    puts "copying #{e} into #{final_path}"
+    FileUtils.cp( e, final_path )
+  end
 end

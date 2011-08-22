@@ -30,7 +30,6 @@ function loadImages(){
       var src = img.src;
       
       $( img ).load( function() {
-        $('#element_' + id).css( 'background-color', 'grey' );
         $('#element_' + id + ' img').attr( 'src', src );
         setTimeout( function() { $('#element_' + id + ' img').fadeIn( 'slow' ); }, 2000 );
       });            
@@ -43,9 +42,9 @@ $( function(){
   loadImages();
 
   $( '#content' ).travelling({
-    max_velocity: 6,
+    max_velocity: 4,
     inactive_zone: 100,
-    fps: 10
+    fps: 20
   });
   
   activateLightbox();
