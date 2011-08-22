@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>{{#home}}{{title}}{{/home}}</title> 
+    
+    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
  
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{assets}}/travelling_me.js"></script>
@@ -15,72 +17,19 @@
     <link rel="stylesheet" type="text/css" href="{{assets}}/jquery-lightbox/css/jquery.lightbox-0.5.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{assets}}/jquery-lightbox/css/custom.css" media="screen" />
     
-    
-    <script>      
+    <script>
+      var assets = "{{assets}}";
       var lattice_rows = 10;
-
-    
-      $( function(){
-        latticeSize();
-        loadImages();
-
-        $( '#content' ).travelling({
-          max_velocity: 6,
-          inactive_zone: 100,
-          fps: 10
-        });
-        
-        activateLightbox();
-      });
-      
-      function activateLightbox(){
-        $('.element a').lightBox({
-          imageLoading:  '{{assets}}/jquery-lightbox/images/lightbox-ico-loading.gif',
-          imageBtnPrev:  '{{assets}}/jquery-lightbox/images/lightbox-btn-prev.gif',
-          imageBtnNext:  '{{assets}}/jquery-lightbox/images/lightbox-btn-next.gif',
-          imageBtnClose: '{{assets}}/jquery-lightbox/images/lightbox-btn-close.gif',
-          imageBlank:    '{{assets}}/jquery-lightbox/images/lightbox-blank.gif'
-        });
-      }
-      
-      function latticeSize(){
-        lattice_columns = Math.ceil( $( '.element' ).length / lattice_rows );
-        
-        lattice_width = ( lattice_columns * $( '.element' ).width() );
-        lattice_height = ( lattice_rows * $( '.element' ).height() );
-        
-        $('#lattice').css( 'width', lattice_width + 'px' );
-        $('#lattice').css( 'height', lattice_height + 'px' );
-      }
-      
-      function loadImages(){
-        var images = $('.element img').sort( function(){ return ( Math.round( Math.random() * 100 ) ) } );
-        
-        for( var i = 0; i < images.length; i++ ) {
-          var img = new Image();
-          img.src = $( images[i] ).attr( 'src' ).replace( /#/, '' );
-          
-          ( function() {
-            var id = $( images[i] ).attr( 'id' ).replace( 'image_', '' );
-            var src = img.src;
-            
-            $( img ).load( function() {
-              $('#element_' + id).css( 'background-color', 'grey' );
-              $('#element_' + id + ' img').attr( 'src', src );
-              setTimeout( function() { $('#element_' + id + ' img').fadeIn( 'slow' ); }, 2000 );
-            });            
-          })();
-
-        }
-      }
-      
-      function randOrd() {
-        return ( Math.round( Math.random() * 100 ) ); 
-      }
     </script>
+    <script type="text/javascript" src="{{assets}}/application.js"></script>
+    
   </head>  
   <body> 
-    <div id="container">   
+    <div id="container">
+      <div id="description">
+        <h1>&gt; {{#home}}{{title}}{{/home}}</h1>
+        <div id="text">{{#home}}{{#to_md}}{{description}}{{/to_md}}{{/home}}</div>
+      </div>
       <div id="content">
         <div id="lattice">
           {{#home}}
