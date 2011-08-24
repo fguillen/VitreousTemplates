@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vitreous Template :: {{#element}}{{title}}{{/element}}</title>
+  <link rel='stylesheet' href='{{assets}}/style.css' type='text/css' /> 
+</head>
+<body>
+  <div id="wrapper">
+    <div id="menu">
+      <ul>
+        {{#home}}
+          {{#collections}}
+            <li><a href="{{link}}">{{title}}</a></li>
+          {{/collections}}
+        {{/home}}
+      </ul>
+    </div>
+    
+    <div id="content">
+      {{#element}}
+
+        {{#home?}}
+          {{>collection}}
+        {{/home?}}
+              
+        {{#collection?}}
+          {{>collection}}
+        {{/collection?}}
+        
+        {{#item?}}
+          {{>item}}
+        {{/item?}}
+        
+        {{#not_found?}}
+          <h1>Not found</h1>
+        {{/not_found?}}
+        
+      {{/element}}
+    </div>
+  </div>
+</body>
+</html>

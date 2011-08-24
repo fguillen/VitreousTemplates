@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>{{#element}}{{title}}{{/element}} ::V:: {{#home}}{{title}}{{/home}}</title> 
+    <link rel="stylesheet" href="{{assets}}/style.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{assets}}/jquery.js"></script>
+    <script type="text/javascript" src="{{assets}}/application.js"></script>
+  </head>
+
+ 
+  <body> 
+    <div id="proyector" class="full-screen" style="display: none">
+      <div id="screen-a" class="full-screen"></div>
+      <div id="screen-b" class="full-screen" style="display: none"></div>
+      <div id="controls">
+        <div id="close" class="control">
+          <a href="#" onclick="closeProyector();">Close</a>
+        </div>
+        <div id="next" class="control">
+          <a href="#" onclick="next();">&gt;</a>
+        </div>
+        <div id="previous" class="control">
+          <a href="#" onclick="previous();">&lt;</a>
+        </div>
+      </div>
+    </div>
+    
+    <div id="header">
+      <h1><a href="/" >{{#home}}{{title}}{{/home}}</a></h1>
+      <h2>Vitreous Photo Gallery</h2>
+    </div>
+
+
+    <div id="content"> 
+      {{#element}}
+      <div class="header">
+        <h1>{{title}}</h1>
+        <p>{{description}}</p>
+      </div>
+      {{/element}}
+      
+      {{#element}}
+        <div id="collections">
+        {{#collections}}
+          <div class="collection"> 
+            <div class="header">
+              <h1><a href="{{link}}">{{title}}</a></h1>
+              <p>{{description}}</p> 
+            </div>
+            {{#file}}
+              <div class="image" style="background-image: url( '{{file}}' );"></div>
+            {{/file}}
+          </div> 
+        {{/collections}}
+        </div>
+        
+        <div id="items">
+          {{#items}}
+            <div class="item" onclick="showMe( this );" href="#{{link}}" id="item_{{slug}}"> 
+              <div class="header" style="display: none">
+                <h1><a href="{{link}}">{{title}}</a></h1>
+              </div>
+              {{#file}}
+                <div class="image" style="background-image: url( '{{file}}' );"></div>
+              {{/file}}
+            </div> 
+          {{/items}}
+          <div class="line-break"></div>
+        </div>
+        
+      {{/element}}
+    </div>
+    
+    <div id="content_footer">
+      <div id="footer">
+        <p>
+          Example of Vitreous Template
+        </p>
+      </div>    
+    </div>
+  </body> 
+</html>

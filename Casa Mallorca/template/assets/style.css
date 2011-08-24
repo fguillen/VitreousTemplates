@@ -34,15 +34,36 @@ a {
   top: 0px;
   left: 20px;
   width: 250px;
-  padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
+  overflow: auto;
 }
+
+#text .content {
+  padding: 10px;
+}
+
 #text p{
   margin-bottom: 10px;
 }
 
 #text p strong{
   font-weight: bold;
+}
+
+#text .language-control {
+  text-align: right;
+
+  margin: 0px 10px 10px 0px;
+
+}
+
+#text .language-control a {
+  padding: 5px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  color: white;
+  background-color: black;
+  color: white;
 }
 
 #controls {

@@ -55,7 +55,31 @@ function play() {
   timer = setInterval( function() { nextImage( false ); }, 10000 );
 }
 
+function language( locale, velocity ){
+  if( velocity == undefined ) {
+    velocity = 'fast';
+  }
+  
+  var old_locale = locale == 'es' ? 'en' : 'es';
+  
+  $('#' + old_locale + '.language').fadeOut( 
+    velocity, 
+    function() {
+      console.log( "fadiningn the div: " + locale );
+      $('#' + locale + '.language').fadeIn( velocity );
+    }
+  );
+}
+
 $(function() {
   actualImage = -1;
   play();
+  
+  var locale = window.location.hash.replace( '#', '' );
+
+  if( locale != 'es' && locale != 'en' ) {
+    locale = default_locale;
+  }
+  
+  setTimeout( function() { language( locale, 'slow' ); }, 3000 );
 });

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Casa Mallorca en Alquiler</title>
+  <title>Casa Mallorca en Alquiler // Mallorca's House in Rent</title>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script type="text/javascript" src="{{assets}}/application.js"></script>
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{{assets}}/style.css" type="text/css" />
   
   <script>
+    var default_locale = 'es';
     var images = new Array();
     var n = 0;
 
@@ -27,7 +28,27 @@
   </div>
   
   <div id="text">
-    {{#home}}{{#to_md}}{{description}}{{/to_md}}{{/home}}
+    
+    <div class="language" id="es" style="display:none">
+      <div class="language-control">
+        <a href="#en" onclick="language( 'en' );">English</a>
+      </div>
+      
+      <div class="content">
+        {{#home}}{{#to_md}}{{txt_es}}{{/to_md}}{{/home}}
+      </div>
+    </div>
+    
+    <div class="language" id="en" style="display:none">
+      <div class="language-control">
+        <a href="#es" onclick="language( 'es' );">Espa&ntilde;ol</a>
+      </div>
+      
+      <div class="content">
+        {{#home}}{{#to_md}}{{txt_en}}{{/to_md}}{{/home}}
+      </div>
+    </div>
+  
   </div>
   
   <div id="controls">

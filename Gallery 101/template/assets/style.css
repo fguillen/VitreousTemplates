@@ -1,0 +1,292 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+html, body {
+  margin:0;
+  padding:0;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+  background-color:#000;
+  font-weight:normal;
+  height:100%;
+}
+/* ----- algemeen ----- */
+* {
+  margin:0;
+  outline:none;
+  font-family:Arial, Helvetica, sans-serif;
+  padding:0;
+  border:0;
+}
+
+#content_header {
+  width:100%;
+  background-color:#0c0c0c;
+}
+
+#header {
+  width:800px;
+  height:50px;
+  margin:0 auto;
+  padding: 10px;
+  text-align: right;
+
+}
+
+#header h1 {
+  margin:8px 0 0 0;
+}
+
+#header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+#header h2 {
+  color:#0cc4e5;
+  font-weight:normal;
+  font-size:13px;
+}
+
+/* HOME CONTENT */
+
+.image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#content {
+  width:800px;
+  margin:0 auto;
+}
+
+
+.collection {
+  margin:22px 0 0 0;
+  cursor:pointer;
+}
+
+.collection .header,
+#content > .header {
+  border-bottom:2px solid #342f2f;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.collection:hover .header{
+  border-bottom:2px solid #0cc4e5;
+}
+
+.header h1 {
+  font-weight: lighter;
+  color: #0cc4e5;  
+}
+
+.header h1 a {
+  color: #FFF;  
+  text-decoration: none;
+  padding: 0 35px 0 0;
+}
+
+.collection .header h1{
+  font-size: 44px;
+}
+
+.collection .header h1 a {
+  background: url('./row.png') no-repeat bottom right;
+}
+
+.collection:hover h1 a {
+  color:#0cc4e5;
+  background:url('./row.png') no-repeat top right;
+}
+
+.header p {
+  font-size:12px;
+  color:#fff;
+}
+
+.collection .header p {
+  color:#444;
+}
+.collection:hover p {
+  color:#FFF;
+}
+
+.collection .image{
+  height: 200px;
+  width: 100%;
+}
+
+.collection .image img{
+  width: 800px;
+}
+
+.items {
+}
+
+.item {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 5px;
+}
+
+.item .image{
+  width: 100%;
+  height: 100%;
+  opacity: .8;
+}
+
+.item:hover .image {
+  opacity: 1;
+}
+
+#content_footer {
+  width:100%;
+  border-top:1px solid #342f2f;
+  margin:60px 0 0 0
+}
+#footer {
+  width:800px;
+  margin:0 auto;
+}
+#footer p {
+  color:#797979;
+  line-height:19px;
+  font-size:11px;
+  margin:15px 0;
+}
+#footer p a {
+  color:#797979;
+  text-decoration:underline;
+}
+
+.line-break {
+  clear: both;
+}
+
+.full-screen {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;  
+}
+
+#proyector {
+  z-index: 100;
+  background-color: black;
+}
+
+#proyector #controls{
+  z-index: 110;
+}
+
+#proyector .control {
+  position: absolute;
+}
+
+#proyector .control a {
+  display: block;
+  position: absolute;
+  padding: 10px;
+  background-color: rgba( 0, 0, 0, 0.8 );
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  opacity: 0.2;
+}
+
+#proyector .control:hover a {
+  opacity: 1;
+}
+
+#proyector .control#close{
+  top: 0px;
+  left: 0px;
+  height: 100px;
+  width: 100%;
+}
+
+#proyector .control#close a {
+  left: 80%;
+  top: 0px;
+}
+
+#proyector .control#next,
+#proyector .control#previous {
+  font-size: 100px;
+}
+
+#proyector .control#next {
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 100px;
+}
+
+#proyector .control#next a {
+  top: 50%;
+  right: 0px;
+}
+
+#proyector .control#previous {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100px;
+}
+
+#proyector .control#previous a {
+  top: 50%;
+  left: 0px;
+}
+
+#proyector .header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#proyector .header h1 a{
+  color: white;
+  text-decoration: none;
+}
+
+#proyector .header p {
+  padding-left: 100px;
+}
+
+#proyector .header {
+  display: block !important;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 80%;
+  color: white;
+  padding: 20px 10%;
+  opacity: 0.2;
+  background-color: rgba( 0, 0, 0, 0.8 );
+}
+
+#proyector .header:hover {
+  opacity: 1;
+}
+
+
+#proyector .image {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+    
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
